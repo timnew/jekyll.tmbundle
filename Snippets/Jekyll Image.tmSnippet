@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>content</key>
+	<string>![${1:title}](${2:path} "${3:alt}")
+</string>
+	<key>name</key>
+	<string>Jekyll Image</string>
+	<key>scope</key>
+	<string>text.html.markdown.jekyll</string>
+	<key>tabTrigger</key>
+	<string>!</string>
+	<key>uuid</key>
+	<string>7D9B8DCF-EB2F-4D16-8043-D02AE9892BE8</string>
+</dict>
+</plist>

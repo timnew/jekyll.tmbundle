@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>beforeRunningCommand</key>
-	<string>nop</string>
+	<string>saveActiveFile</string>
 	<key>command</key>
 	<string>[[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] &amp;&amp; . "$HOME/.rvm/scripts/rvm" # Load RVM function
@@ -11,8 +11,9 @@
 cd $TM_PROJECT_DIRECTORY
 
 title=$(CocoaDialog standard-inputbox \
- --title "New Post" \
- --informative-text "Title of the new post:")
+ ‑‑no‑newline \
+ --title "Rename Post" \
+ --informative-text "New title of the post:")
 
 option=$(head -n1 &lt;&lt;&lt; "$title")
 title=$(tail -n1 &lt;&lt;&lt; "$title")
@@ -20,33 +21,25 @@ title=$(tail -n1 &lt;&lt;&lt; "$title")
 [[ $option == "2" ]] &amp;&amp; exit_discard
 
 if [[ "$option" -eq "$title" ]]; then
-  output=$(rake post)
+  rake rename_post["$TM_FILEPATH"]
 else
-  output=$(rake post["$title"])
+  rake rename_post["$TM_FILEPATH","$title"]
 fi
 
-expr="^Creating new post: (.*)$"
-
-if [[ $output =~ $expr ]]; then
-	post=${BASH_REMATCH[1]}
-	echo "new post file created at $post"
-     rescan_project
-	exit_show_tool_tip
-else
-   	echo "Error"
-	exit_show_tool_tip
-fi</string>
+rescan_project
+exit_show_tool_tip
+</string>
 	<key>input</key>
 	<string>none</string>
 	<key>keyEquivalent</key>
-	<string>@n</string>
+	<string>@R</string>
 	<key>name</key>
-	<string>New Post</string>
+	<string>Rename</string>
 	<key>output</key>
 	<string>showAsTooltip</string>
 	<key>scope</key>
 	<string>text.html.markdown.jekyll</string>
 	<key>uuid</key>
-	<string>FB00DEAE-BC80-4737-BD7F-94B5226658E4</string>
+	<string>7DC89741-FEB6-4F52-8D9D-0E4CCA5AABD0</string>
 </dict>
 </plist>
